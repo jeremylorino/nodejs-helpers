@@ -1,0 +1,44 @@
+{
+  "name": "nodejs-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test node index.js",
+    "pretest": "npm run clean && npm run build",
+    "upload": "gsutil cp nodejs-common-1.0.1.tgz gs://npm-repository-v1",
+    "build": "webpack --config webpack.config.js",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p ."
+  },
+  "keywords": [
+    "logger"
+  ],
+  "author": "Jeremy Lorino <jeremylorino@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@google-cloud/logging-winston": "^0.8.0",
+    "@google-cloud/pubsub": "^0.16.2",
+    "@google-cloud/storage": "^1.5.2",
+    "@types/google-cloud__pubsub": "^0.14.0",
+    "@types/google-cloud__storage": "^1.1.7",
+    "bluebird": "^3.5.1",
+    "googleapis": "^25.0.0",
+    "lodash": "^4.17.4",
+    "mime-types": "^2.1.17",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/gapi.client.pubsub": "^1.0.0",
+    "@types/lodash": "^4.14.98",
+    "@types/mime-types": "^2.1.0",
+    "@types/node": "^9.4.0",
+    "@types/winston": "^2.3.7",
+    "gts": "^0.5.3",
+    "ts-loader": "^3.3.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

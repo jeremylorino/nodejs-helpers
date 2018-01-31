@@ -1,0 +1,69 @@
+import * as PubSub from '@google-cloud/pubsub';
+  // { logger } = require('./index');
+
+const pubsub = PubSub();
+
+export interface MessageAttributes {
+  [key:string]: string;
+}
+
+/**
+ * An abstraction class for Google Pubsub
+ **/
+export default class MessageTransport {
+  topicName: string;
+  topic: PubSub.Topic;
+  publisher: PubSub.Publisher;
+  readonly autoCreateTopic: boolean;
+  
+  /**
+   * @param {string} topicName - Message topic name.
+   * @param {boolean} autoCreateTopic? - Create the topic if it does not exist.
+   **/
+  constructor(topicName: string, autoCreateTopic?: boolean) {
+    this.topicName = topicName;
+    this.topic = pubsub.topic(this.topicName);
+    this.publisher = this.topic.publisher();
+    this.autoCreateTopic = autoCreateTopic || false;
+    
+    this.checkTopic();
+  }
+  
+  private async checkTopic() {
+    let [exists] = await this.topic.exists();
+    
+    if(this.autoCreateTopic === true && !exists) {
+      this.topic = (await this.createTopic())[0];
+    }
+    
+    return this.topic;
+  }
+  
+  createTopic() {
+    return this.topic.create();
+  }
+  
+  /**
+   * Publish the provided message.
+   * 
+   * @param {object|buffer} data - The message payload to publish. If data is not a Buffer object
+   *   then it will be converted before publishing the message; otherwise the message is published.
+   * @param {object} attributes? - Attributes of the message in the form
+   *   of an object containing a list of "key": value pairs.
+   * @return {string[]} - The server-assigned ID of the published message.
+   **/
+  async publish(data: any, attributes?: MessageAttributes): Promise<string[]> {
+    await this.checkTopic();
+    
+    // logger.debug('publish message', { data, attributes });
+    let payload: any;
+    
+    if(data instanceof Buffer) {
+      payload = data;
+    } else {
+      payload = new Buffer(JSON.stringify(data));
+    }
+
+    return this.publisher.publish(payload, attributes);
+  }
+}
