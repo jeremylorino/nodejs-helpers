@@ -4,16 +4,13 @@ console.log(path.resolve(__dirname, 'dist/'));
 const serverConfig = {
   target: 'node',
   entry: {
-    models: './src',
+    index: './src',
   },
   output: {
     filename: '[name].js',
-    // path: path.resolve(__dirname),
-    path: path.resolve(__dirname, 'build/'),
-    // path: __dirname,
-    library: 'models',
+    path: path.resolve(__dirname, 'build'),
     libraryTarget: 'commonjs2',
-    pathinfo: true,
+    // pathinfo: true,
   },
   resolve: {
     extensions: ['.d.ts', '.ts']

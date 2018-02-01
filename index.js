@@ -1,17 +1,14 @@
 'use strict';
 
-// const Logger = require('./logger.js');
-
-// module.exports.logger = new Logger();
-
 const {
   StorageProvider,
   MessageTransport,
   Logger,
-} = require('./dist/models');
+} = require('./build');
+// console.log(common);
 
-// const logger = new Logger();
-// logger.info('test');
+const logger = new Logger();
+logger.info('test');
 
 // let transport = new MessageTransport('test-jal', true);
 // transport.publish({ jal: 'test' }, { attr1: '1', attr2: '2' })
