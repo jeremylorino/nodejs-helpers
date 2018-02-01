@@ -69,7 +69,7 @@ if (latestVersion && semver.lte(newVersion, latestVersion)) {
 // }
 
 // Increment the version
-exec('npm version ' + newVersion, {
+exec(`npm version ${newVersion} --allow-same-version`, {
   cwd: cwd
 });
 
@@ -103,9 +103,9 @@ setTimeout(function() {
   // });
 
   // To circumvent an npm bug which can publish empty node_modules
-  exec('rm -rf node_modules', {
-    cwd: cwd
-  });
+  // exec('rm -rf node_modules', {
+  //   cwd: cwd
+  // });
 console.log('pack');
   // Publish the module
   exec(`npm pack ${moduleName}@${newVersion}`, {
