@@ -108,7 +108,7 @@ setTimeout(function() {
   // });
 console.log('pack');
   // Publish the module
-  exec(`npm pack ${moduleName}@${newVersion}`, {
+  exec(`npm pack`, {
     cwd: cwd
   });
 

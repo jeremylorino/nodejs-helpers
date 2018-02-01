@@ -5,8 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "test": "NODE_ENV=test node index.js",
-    "pretest": "npm run clean && npm run build",
-    "upload": "gsutil cp nodejs-common-1.0.1.tgz gs://now-ims-npm-repo-v1",
+    "pretest": "npm i && npm run clean && npm run build",
+    "upload": "gsutil cp nodejs-common-1.0.0.tgz gs://now-ims-npm-repo-v1",
     "build": "webpack --config webpack.config.js",
     "check": "gts check",
     "clean": "rimraf ./build"
