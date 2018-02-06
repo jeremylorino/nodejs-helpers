@@ -4,7 +4,7 @@ const {
   StorageProvider,
   MessageTransport,
   Logger,
-} = require('./build');
+} = require('../build');
 // console.log(common);
 
 const logger = new Logger();

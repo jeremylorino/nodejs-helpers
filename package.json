@@ -1,12 +1,13 @@
 {
-  "name": "nodejs-common",
-  "version": "1.1.0",
+  "name": "nodejs-helpers",
+  "version": "1.1.1",
   "description": "",
-  "main": "./build/index.js",
+  "main": "./build/index",
+  "typings": "./build/index",
   "scripts": {
-    "test": "NODE_ENV=test node index.js",
+    "test": "NODE_ENV=test node test/index.js",
     "pretest": "npm i && npm run clean && npm run build",
-    "upload": "gsutil cp nodejs-common-1.0.0.tgz gs://now-ims-npm-repo-v1",
+    "upload": "gsutil cp nodejs-common-1.1.1.tgz gs://now-ims-npm-repo-v1",
     "build": "webpack --config webpack.config.js",
     "check": "gts check",
     "clean": "rimraf ./build"
@@ -38,8 +39,6 @@
     "@types/winston": "^2.3.7",
     "gts": "^0.5.3",
     "rimraf": "^2.6.2",
-    "semver": "^5.5.0",
-    "shelljs": "^0.8.1",
     "ts-loader": "^3.3.1",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
