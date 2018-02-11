@@ -1,32 +1,49 @@
-'use strict';
+/*global assert */
+"use strict";
 
 const {
   StorageProvider,
   MessageTransport,
   Logger,
-} = require('../build');
-// console.log(common);
+} = require("../build"),
+  assert = require("assert");
 
-const logger = new Logger();
-logger.info('test');
+function testLogger() {
+  const logger = new Logger();
+  logger.info("test");
+}
 
-// let transport = new MessageTransport('test-jal', true);
-// transport.publish({ jal: 'test' }, { attr1: '1', attr2: '2' })
-//   .then((resp) => {
-//     console.log(resp);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//     console.log(err.code, err.message, err.details);
-//   });
+async function testMessageTransport() {
+  try {
+    const transport = new MessageTransport("test-jal", true);
+    let response = await transport.publish({ jal: "test" }, { attr1: "1", attr2: "2" });
+    assert(response !== null);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-// let storage = new StorageProvider({
-//   // "forBigQuery": true,
-//   "bucketName": "now-ims-core-dev_bigquery-staging"
-// });
+async function testStorageProvider() {
+  try {
+    const storage = new StorageProvider({
+      forBigQuery: true,
+      bucketName: "now-ims-core-dev_bigquery-staging"
+    });
 
-// storage.save('test_jal/jal.txt', 'hey')
-//   .then((resp)=>{
-//     console.log(resp);
-//   })
-//   .catch((err)=>console.error(err));
+    let response = await storage.save("test_jal/jal.txt", "hey");
+    assert(response.success === true);
+    assert(response.payload === "\"h\"\n\"e\"\n\"y\"");
+
+    response = await storage.save("test_jal/jal.txt", "hey", { forBigQuery: false });
+    assert(response.success === true);
+    assert(response.payload === "hey");
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+(async() => {
+  testLogger();
+  await testMessageTransport();
+  await testStorageProvider();
+})();
