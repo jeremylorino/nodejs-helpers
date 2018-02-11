@@ -4,6 +4,7 @@ export interface StorageProviderOptions {
 }
 export default class StorageProvider {
     private storage;
+    private logger;
     options: StorageProviderOptions;
     /**
      * @param {object} options?
@@ -11,7 +12,7 @@ export default class StorageProvider {
      * @param {boolean} options.forBigQuery - Format data for the consumption
      * of BigQuery before save. Default: false
      **/
-    constructor(options?: StorageProviderOptions);
+    constructor(options?: StorageProviderOptions, logger?: any);
     /**
      * Save data to the remote storage provider.
      *

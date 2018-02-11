@@ -2,7 +2,15 @@ import * as Storage from '@google-cloud/storage';
 import * as _ from 'lodash';
 import * as mimeTypes from 'mime-types';
 
-const gcs = Storage();
+class Logger {
+  info(...args:any[]){}
+  log(...args:any[]){}
+  debug(...args:any[]){}
+  warn(...args:any[]){}
+  error(...args:any[]){}
+}
+const gcs = Storage(),
+  _logger = new Logger();
 
 /**
  * Recursively rename properties in to meet BigQuery field name requirements.
@@ -36,25 +44,28 @@ export interface StorageProviderOptions {
 
 export default class StorageProvider {
   private storage: Storage.Storage;
-  
+  private logger: any;
+
   options: StorageProviderOptions;
-  
+
   /**
    * @param {object} options?
    * @param {string} options.bucketName - The default bucket where files will be saved.
    * @param {boolean} options.forBigQuery - Format data for the consumption
    * of BigQuery before save. Default: false
    **/
-  constructor(options?: StorageProviderOptions) {
+  constructor(options?: StorageProviderOptions, logger?: any) {
     this.storage = gcs;
     this.options = _.merge({
       forBigQuery: false,
     }, options);
+
+    this.logger = logger || _logger;
   }
 
   /**
    * Save data to the remote storage provider.
-   * 
+   *
    * @param {string} filename - The filename as it will appear on the remote storage provider.
    * @param {object} data - Data to be saved.
    * @param {object} options?
@@ -82,24 +93,21 @@ export default class StorageProvider {
     const bucketName = _options.bucketName;
     const file = this.storage.bucket(bucketName).file(filename);
 
-    // logger.info(`Saving events to ${filename} in bucket ${bucketName}`);
-    console.log(`Saving events to ${filename} in bucket ${bucketName}`);
-    
+    this.logger.info(`Saving events to ${filename} in bucket ${bucketName}`);
+
     try {
       await file.save(payload, {
         metadata: {
           contentType: mimeTypes.lookup(filename) || '',
         }
       });
-      // logger.info(`JSON written to gs://${bucketName}/${filename}`);
-      console.log(`JSON written to gs://${bucketName}/${filename}`);
+      this.logger.info(`JSON written to gs://${bucketName}/${filename}`);
       return {
         success: true,
         payload: payload,
       };
     } catch(err) {
-      // logger.error(err);
-      console.error(err);
+      this.logger.error(err);
       throw err;
     }
   }
