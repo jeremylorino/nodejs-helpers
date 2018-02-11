@@ -1,5 +1,5 @@
-import * as PubSub from '@google-cloud/pubsub';
-  // { logger } = require('./index');
+import * as PubSub from "@google-cloud/pubsub";
+  // { logger } = require("./index");
 
 class Logger {
   info(...args:any[]){}
@@ -64,7 +64,7 @@ export default class MessageTransport {
   async publish(data: any, attributes?: MessageAttributes): Promise<string[]> {
     await this.checkTopic();
 
-    // logger.debug('publish message', { data, attributes });
+    logger.debug("publish message", { data, attributes });
     let payload: any;
 
     if(data instanceof Buffer) {

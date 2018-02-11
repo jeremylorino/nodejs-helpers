@@ -1,27 +1,24 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-console.log(path.resolve(__dirname, 'dist/'));
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 const serverConfig = {
-  target: 'node',
+  target: "node",
   entry: {
-    index: './src',
+    index: "./src",
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'build'),
-    libraryTarget: 'commonjs2',
-    // pathinfo: true,
+    filename: "[name].js",
+    path: path.resolve(__dirname, "build"),
+    libraryTarget: "commonjs2",
   },
   resolve: {
-    extensions: ['.d.ts', '.ts']
+    extensions: [".d.ts", ".ts"]
   },
-  // devtool: 'source-map',
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: "ts-loader",
       },
     ],
   },
