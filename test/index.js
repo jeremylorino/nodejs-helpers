@@ -17,10 +17,9 @@ async function testMessageTransport() {
   try {
     const transport = new MessageTransport("test-jal", true);
     let response = await transport.publish({ jal: "test" }, { attr1: "1", attr2: "2" });
-    assert(response !== null && response !== undefined);
+    assert(response !== null);
   } catch (err) {
     console.error(err);
-    console.log(err.code, err.message, err.details);
   }
 }
 
