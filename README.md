@@ -1,0 +1,1 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a1a07b714f524c6b95aeda7eed652407)](https://www.codacy.com/app/jeremylorino/nodejs-helpers?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremylorino/nodejs-helpers&amp;utm_campaign=Badge_Grade)
