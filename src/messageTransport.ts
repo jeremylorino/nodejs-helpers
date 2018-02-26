@@ -1,5 +1,4 @@
 import * as PubSub from "@google-cloud/pubsub";
-  // { logger } = require("./index");
 
 class Logger {
   info(...args:any[]){}
@@ -19,6 +18,7 @@ export interface MessageAttributes {
  * An abstraction class for Google Pubsub
  **/
 export default class MessageTransport {
+  logger?: any;
   topicName: string;
   topic: PubSub.Topic;
   publisher: PubSub.Publisher;
@@ -62,9 +62,7 @@ export default class MessageTransport {
    * @return {string[]} - The server-assigned ID of the published message.
    **/
   async publish(data: any, attributes?: MessageAttributes): Promise<string[]> {
-    await this.checkTopic();
-
-    logger.debug("publish message", { data, attributes });
+    this.logger.debug("publish message", { data, attributes });
     let payload: any;
 
     if(data instanceof Buffer) {

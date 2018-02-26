@@ -1,5 +1,5 @@
 /// <reference types="google-cloud__pubsub" />
-import * as PubSub from '@google-cloud/pubsub';
+import * as PubSub from "@google-cloud/pubsub";
 export interface MessageAttributes {
     [key: string]: string;
 }
@@ -7,6 +7,7 @@ export interface MessageAttributes {
  * An abstraction class for Google Pubsub
  **/
 export default class MessageTransport {
+    logger?: any;
     topicName: string;
     topic: PubSub.Topic;
     publisher: PubSub.Publisher;
@@ -15,7 +16,7 @@ export default class MessageTransport {
      * @param {string} topicName - Message topic name.
      * @param {boolean} autoCreateTopic? - Create the topic if it does not exist.
      **/
-    constructor(topicName: string, autoCreateTopic?: boolean);
+    constructor(topicName: string, autoCreateTopic?: boolean, logger?: any);
     private checkTopic();
     createTopic(): Promise<any[]>;
     /**
