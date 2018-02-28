@@ -1,13 +1,13 @@
 {
   "name": "nodejs-helpers",
   "version": "1.1.4",
-  "description": "",
+  "description": "A set of classes to simplify interaction with Google Apis.",
+  "repository": "https://github.com/jeremylorino/node-firestore-backup.git",
   "main": "./build/index",
   "typings": "./build/index",
   "scripts": {
     "test": "NODE_ENV=test node test/index.js",
     "pretest": "npm i && npm run clean && npm run build",
-    "upload": "gsutil cp nodejs-common-1.1.1.tgz gs://now-ims-npm-repo-v1",
     "build": "webpack --config webpack.config.js",
     "check": "gts check",
     "clean": "rimraf ./build"
