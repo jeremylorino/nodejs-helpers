@@ -11,7 +11,7 @@ export default class StorageProvider {
      * @param {string} options.bucketName - The default bucket where files will be saved.
      * @param {boolean} options.forBigQuery - Format data for the consumption
      * of BigQuery before save. Default: false
-     **/
+     */
     constructor(options?: StorageProviderOptions, logger?: any);
     /**
      * Save data to the remote storage provider.
@@ -23,7 +23,7 @@ export default class StorageProvider {
      * override the default bucketName set during instantiation.
      * @param {boolean} options.forBigQuery? - Format data for the consumption
      * of BigQuery before save. Default: false
-     **/
+     */
     save(filename: string, data: any, options?: StorageProviderOptions): Promise<{
         success: boolean;
         payload: any;
