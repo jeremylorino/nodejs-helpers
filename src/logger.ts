@@ -4,7 +4,7 @@ import * as LoggingWinstonTypes from "@google-cloud/logging-winston/build/src/ty
 
 const env = process.env.NODE_ENV || "dev";
 
-let loggingTransportConfig: LoggingWinstonTypes.Options = {
+const loggingTransportConfig: LoggingWinstonTypes.Options = {
   level: ["dev", "test", "local"].includes(env) ? "debug": "error",
 };
 

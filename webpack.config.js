@@ -13,7 +13,6 @@ const serverConfig = {
   resolve: {
     extensions: [".d.ts", ".ts"]
   },
-  devtool: "inline-source-map",
   module: {
     rules: [
       {

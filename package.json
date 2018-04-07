@@ -9,8 +9,9 @@
     "test": "NODE_ENV=test node test/index.js",
     "pretest": "npm i && npm run clean && npm run build",
     "build": "webpack --config webpack.config.js",
-    "check": "gts check",
-    "clean": "rimraf ./build"
+    "check": "./node_modules/.bin/tslint -t codeFrame -p tsconfig.json -c tslint.json",
+    "clean": "rimraf ./build",
+    "preversion": "npm run check"
   },
   "keywords": [
     "logger",
@@ -37,7 +38,7 @@
     "@types/mime-types": "^2.1.0",
     "@types/node": "^9.4.0",
     "@types/winston": "^2.3.7",
-    "gts": "^0.5.3",
+    "gts": "^0.5.4",
     "rimraf": "^2.6.2",
     "ts-loader": "^3.3.1",
     "typescript": "^2.6.2",

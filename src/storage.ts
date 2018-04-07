@@ -53,7 +53,7 @@ export default class StorageProvider {
    * @param {string} options.bucketName - The default bucket where files will be saved.
    * @param {boolean} options.forBigQuery - Format data for the consumption
    * of BigQuery before save. Default: false
-   **/
+   */
   constructor(options?: StorageProviderOptions, logger?: any) {
     this.storage = gcs;
     this.options = _.merge({
@@ -73,9 +73,9 @@ export default class StorageProvider {
    * override the default bucketName set during instantiation.
    * @param {boolean} options.forBigQuery? - Format data for the consumption
    * of BigQuery before save. Default: false
-   **/
+   */
   async save(filename: string, data: any, options?: StorageProviderOptions) {
-    let _options = _.merge({}, this.options, options);
+    const _options = _.merge({}, this.options, options);
     let payload = data;
 
     if (!_options.bucketName) {
@@ -104,7 +104,7 @@ export default class StorageProvider {
       this.logger.info(`JSON written to gs://${bucketName}/${filename}`);
       return {
         success: true,
-        payload: payload,
+        payload,
       };
     } catch(err) {
       this.logger.error(err);

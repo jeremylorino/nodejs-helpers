@@ -5,7 +5,7 @@ export interface MessageAttributes {
 }
 /**
  * An abstraction class for Google Pubsub
- **/
+ */
 export default class MessageTransport {
     logger?: any;
     topicName: string;
@@ -15,7 +15,7 @@ export default class MessageTransport {
     /**
      * @param {string} topicName - Message topic name.
      * @param {boolean} autoCreateTopic? - Create the topic if it does not exist.
-     **/
+     */
     constructor(topicName: string, autoCreateTopic?: boolean, logger?: any);
     private checkTopic();
     createTopic(): Promise<any[]>;
@@ -27,6 +27,6 @@ export default class MessageTransport {
      * @param {object} attributes? - Attributes of the message in the form
      *   of an object containing a list of "key": value pairs.
      * @return {string[]} - The server-assigned ID of the published message.
-     **/
+     */
     publish(data: any, attributes?: MessageAttributes): Promise<string[]>;
 }
