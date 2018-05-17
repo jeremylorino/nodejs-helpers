@@ -465,16 +465,24 @@ var MessageTransport = /** @class */ (function () {
      */
     MessageTransport.prototype.publish = function (data, attributes) {
         return __awaiter(this, void 0, void 0, function () {
-            var payload;
+            var payload, result;
             return __generator(this, function (_a) {
-                this.logger.debug("publish message", { data: data, attributes: attributes });
-                if (data instanceof Buffer) {
-                    payload = data;
+                switch (_a.label) {
+                    case 0:
+                        this.logger.debug("publish message", { data: data, attributes: attributes });
+                        if (data instanceof Buffer) {
+                            payload = data;
+                        }
+                        else {
+                            payload = new Buffer(JSON.stringify(data));
+                        }
+                        return [4 /*yield*/, this.publisher.publish(payload, attributes)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, Array.isArray(result) ?
+                                result :
+                                [result]];
                 }
-                else {
-                    payload = new Buffer(JSON.stringify(data));
-                }
-                return [2 /*return*/, this.publisher.publish(payload, attributes)];
             });
         });
     };

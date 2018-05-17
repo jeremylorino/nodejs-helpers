@@ -27,22 +27,22 @@
     "@google-cloud/logging-winston": "^0.8.0",
     "@google-cloud/pubsub": "^0.17.0",
     "@google-cloud/storage": "^1.5.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.10",
     "mime-types": "^2.1.17",
-    "winston": "^2.4.0"
+    "winston": "^2.4.2"
   },
   "devDependencies": {
-    "@types/google-cloud__pubsub": "^0.14.0",
+    "@types/google-cloud__pubsub": "^0.14.1",
     "@types/google-cloud__storage": "^1.1.7",
-    "@types/lodash": "^4.14.98",
+    "@types/lodash": "^4.14.108",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^9.4.0",
+    "@types/node": "^9.6.17",
     "@types/winston": "^2.3.7",
     "gts": "^0.5.4",
     "rimraf": "^2.6.2",
     "ts-loader": "^3.3.1",
-    "typescript": "^2.6.2",
-    "webpack": "^3.10.0",
+    "typescript": "^2.8.3",
+    "webpack": "^3.12.0",
     "webpack-node-externals": "^1.6.0"
   }
 }

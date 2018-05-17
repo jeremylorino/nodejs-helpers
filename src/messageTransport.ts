@@ -71,6 +71,9 @@ export default class MessageTransport {
       payload = new Buffer(JSON.stringify(data));
     }
 
-    return this.publisher.publish(payload, attributes);
+    const result = await this.publisher.publish(payload, attributes);
+    return Array.isArray(result) ?
+      result :
+      [result];
   }
 }
