@@ -11,7 +11,10 @@
     "build": "webpack --config webpack.config.js",
     "check": "./node_modules/.bin/tslint -t codeFrame -p tsconfig.json -c tslint.json",
     "clean": "rimraf ./build",
-    "preversion": "npm run check"
+    "preversion": "npm run check && npm test",
+    "prerelease": "npm version patch",
+    "release": "npm publish -tag latest --access public",
+    "postrelease": "git push"
   },
   "keywords": [
     "logger",
