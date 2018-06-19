@@ -24,8 +24,8 @@ export default class StorageProvider {
      * @param {boolean} options.forBigQuery? - Format data for the consumption
      * of BigQuery before save. Default: false
      */
-    save(filename: string, data: any, options?: StorageProviderOptions): Promise<{
+    save<T>(filename: string, data: T | T[], options?: StorageProviderOptions): Promise<{
         success: boolean;
-        payload: any;
+        payload: string;
     }>;
 }

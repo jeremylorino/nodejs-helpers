@@ -3,11 +3,11 @@ import * as _ from 'lodash';
 import * as mimeTypes from 'mime-types';
 
 class Logger {
-  info(...args:any[]){}
-  log(...args:any[]){}
-  debug(...args:any[]){}
-  warn(...args:any[]){}
-  error(...args:any[]){}
+  info(...args: any[]) { }
+  log(...args: any[]) { }
+  debug(...args: any[]) { }
+  warn(...args: any[]) { }
+  error(...args: any[]) { }
 }
 const gcs = Storage(),
   _logger = new Logger();
@@ -74,20 +74,22 @@ export default class StorageProvider {
    * @param {boolean} options.forBigQuery? - Format data for the consumption
    * of BigQuery before save. Default: false
    */
-  async save(filename: string, data: any, options?: StorageProviderOptions) {
+  async save<T>(filename: string, data: T | T[], options?: StorageProviderOptions) {
     const _options = _.merge({}, this.options, options);
-    let payload = data;
+    let payload: string;
 
     if (!_options.bucketName) {
       throw new Error(`'options.bucketName' must be provided`);
     }
 
     if (_options.forBigQuery === true) {
-      payload = _.merge([], data);
-      fixNames(payload);
-      payload = (Array.isArray(payload) ? payload : [payload])
-        .map((event) => JSON.stringify(event))
+      const temp = _.merge([], data);
+      fixNames(temp);
+      payload = (Array.isArray(temp) ? temp : [temp])
+        .map((event: any) => JSON.stringify(event))
         .join('\n');
+    } else {
+      payload = data as any;
     }
 
     const bucketName = _options.bucketName;
@@ -106,7 +108,7 @@ export default class StorageProvider {
         success: true,
         payload,
       };
-    } catch(err) {
+    } catch (err) {
       this.logger.error(err);
       throw err;
     }

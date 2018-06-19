@@ -5,7 +5,7 @@ import * as LoggingWinstonTypes from "@google-cloud/logging-winston/build/src/ty
 const env = process.env.NODE_ENV || "dev";
 
 const loggingTransportConfig: LoggingWinstonTypes.Options = {
-  level: ["dev", "test", "local"].includes(env) ? "debug": "error",
+  level: ["dev", "test", "local"].includes(env) ? "debug" : "error",
 };
 
 // populate values if running this package locally
@@ -26,7 +26,7 @@ export default class Logger extends winston.Logger {
     this.add(winston.transports.Console, {
       timestamp: true,
       colorize: true,
-      level: ["dev", "test", "local"].includes(env) ? "debug": "error"
+      level: ["dev", "test", "local"].includes(env) ? "debug" : "error"
     });
   }
 }

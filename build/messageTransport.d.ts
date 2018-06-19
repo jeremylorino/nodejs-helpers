@@ -17,7 +17,7 @@ export default class MessageTransport {
      * @param {boolean} autoCreateTopic? - Create the topic if it does not exist.
      */
     constructor(topicName: string, autoCreateTopic?: boolean, logger?: any);
-    private checkTopic();
+    private checkTopic;
     createTopic(): Promise<any[]>;
     /**
      * Publish the provided message.
