@@ -15,7 +15,9 @@
     "preversion": "npm test",
     "prerelease": "npm version patch",
     "release": "npm publish -tag latest --access public",
-    "postrelease": "git push"
+    "postrelease": "git push",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "logger",
@@ -33,7 +35,8 @@
     "@google-cloud/storage": "^1.7.0",
     "lodash": "^4.17.10",
     "mime-types": "^2.1.18",
-    "winston": "^2.4.3"
+    "winston": "^2.4.3",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "@types/google-cloud__pubsub": "^0.18.0",
@@ -48,5 +51,6 @@
     "typescript": "^2.8.3",
     "webpack": "^3.12.0",
     "webpack-node-externals": "^1.6.0"
-  }
+  },
+  "snyk": true
 }
