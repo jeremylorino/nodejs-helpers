@@ -1,6 +1,6 @@
 # Node.js Helpers
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/43ef3b28217d4707adcebd3712c36f27)](https://www.codacy.com/gh/jeremylorino/nodejs-helpers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jeremylorino/nodejs-helpers&utm_campaign=Badge_Grade)utm_medium=referral&amp;utm_content=jeremylorino/nodejs-helpers&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/43ef3b28217d4707adcebd3712c36f27)](https://www.codacy.com/gh/jeremylorino/nodejs-helpers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jeremylorino/nodejs-helpers&utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/bb63b024-21c7-47f2-b266-b57a8ff3e94f)](https://codebeat.co/projects/github-com-jeremylorino-nodejs-helpers-master)
 [![dependencies Status](https://david-dm.org/jeremylorino/nodejs-helpers/status.svg)](https://david-dm.org/jeremylorino/nodejs-helpers)
 [![devDependencies Status](https://david-dm.org/jeremylorino/nodejs-helpers/dev-status.svg)](https://david-dm.org/jeremylorino/nodejs-helpers?type=dev)
