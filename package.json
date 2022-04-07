@@ -30,10 +30,10 @@
   "dependencies": {
     "@google-cloud/logging-winston": "^0.10.0",
     "@google-cloud/pubsub": "^0.18.0",
-    "@google-cloud/storage": "^1.7.0",
+    "@google-cloud/storage": "^5.19.0",
     "lodash": "^4.17.10",
     "mime-types": "^2.1.18",
-    "winston": "^2.4.3"
+    "winston": "^3.3.0"
   },
   "devDependencies": {
     "@types/google-cloud__pubsub": "^0.18.0",
